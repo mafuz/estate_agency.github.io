@@ -264,38 +264,28 @@
     </div> 
 
 <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
-     <script src="https://mediafiles.botpress.cloud/9e63c7a1-509f-484b-9487-4d0d1fbb6c65/webchat/config.js" defer></script>
-    <style>
-        #myButton {
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <button id="myButton"></button>
-    <script>
-        window.botpressWebChat.onEvent(function(event) {
-            if (event.type === 'LIFECYCLE.LOADED') {
-                window.botpressWebChat.sendEvent({ type: 'show' });
-                window.botpressWebChat.sendMessage({ type: 'text', text: 'Hello' });
-                window.botpressWebChat.sendEvent({
-                    type: "loadConversation",
-                });
-            }
-        }, ['LIFECYCLE.LOADED']);
+     
+  <script>
+  window.botpressWebChat.init({
+    // bot configuration
+    src: "https://mediafiles.botpress.cloud/9e63c7a1-509f-484b-9487-4d0d1fbb6c65/webchat/config.js" defer
+  });
 
-        window.addEventListener("message", function (event) {
-            if (event.data.type == "LIFECYCLE.READY") {
-                window.botpressWebChat.sendEvent({
-                    type: "trigger",
-                    channel: "web",
-                    payload: {
-                        text: "",
-                    },
-                });
-            }
-        });
-    </script>
+  // executes when the page loads
+  window.addEventListener("load", function() {
+    // open the chatbot because the trigger doesn't work if the chatbot isn't open
+    window.botpressWebChat.sendEvent({ type: "show" });
+
+    // workaround using 'setTimeout' because the 'onEvent(function(), ["LIFECYCLE.LOADED"])' doesn't work, and we need to trigger this only after the chatbot is loaded
+    setTimeout(function() {
+      window.botpressWebChat.sendPayload({
+        type: "trigger",
+        payload: {}
+      });
+    }, 3500); // 3.5 seconds, not too short to let it load, not too long to have a message too delayed
+  });
+</script> 
+
     <div class="swiper-pagination"></div>     
   </div><!-- End Intro Section -->
 
