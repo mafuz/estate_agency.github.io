@@ -665,7 +665,7 @@ a:hover {
   bottom: 5px;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 1px;
   z-index: 0;
   background-color: #2eca6a;
   transform: scaleX(0);
