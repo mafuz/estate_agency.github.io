@@ -263,13 +263,19 @@
       </div>
     </div> 
 
-<script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>   
-   
-  <script>
-       window.botpressWebChat.init({
-    // bot configuration
-   src:"https://mediafiles.botpress.cloud/9e63c7a1-509f-484b-9487-4d0d1fbb6c65/webchat/config.js" defer  
-  }); 
+ 
+ <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
+<script>
+  window.botpressWebChat.init({
+      "composerPlaceholder": "Chat with bot",
+      "botConversationDescription": "This chatbot was built surprisingly fast with Botpress",
+      "botId": "9e63c7a1-509f-484b-9487-4d0d1fbb6c65",
+      "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
+      "messagingUrl": "https://messaging.botpress.cloud",
+      "clientId": "9e63c7a1-509f-484b-9487-4d0d1fbb6c65",
+      "showPoweredBy": true
+  });
+</script>
   // executes when the page loads
   window.addEventListener("load", function() {
     // open the chatbot because the trigger doesn't work if the chatbot isn't open
