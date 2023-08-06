@@ -263,12 +263,12 @@
       </div>
     </div> 
 
-<script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>     
-  <script defer>
-  window.botpressWebChat.init({
+<script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>   
+   
+  <script>
+       window.botpressWebChat.init({
     // bot configuration
-  
-    src: "https://mediafiles.botpress.cloud/9e63c7a1-509f-484b-9487-4d0d1fbb6c65/webchat/config.js" 
+  src="https://mediafiles.botpress.cloud/9e63c7a1-509f-484b-9487-4d0d1fbb6c65/webchat/config.js" || defer
   });
   // executes when the page loads
   window.addEventListener("load", function() {
@@ -283,6 +283,7 @@
       });
     }, 3500); // 3.5 seconds, not too short to let it load, not too long to have a message too delayed
   });
+  
 </script> 
 
     <div class="swiper-pagination"></div>     
