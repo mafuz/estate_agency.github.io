@@ -276,21 +276,17 @@
       "showPoweredBy": true
   });
 </script>
-  // executes when the page loads
-  window.addEventListener("load", function() {
-    // open the chatbot because the trigger doesn't work if the chatbot isn't open
-    window.botpressWebChat.sendEvent({ type: "show" });
-
-    // workaround using 'setTimeout' because the 'onEvent(function(), ["LIFECYCLE.LOADED"])' doesn't work, and we need to trigger this only after the chatbot is loaded
-    setTimeout(function() {
-      window.botpressWebChat.sendPayload({
-        type: "trigger",
-        payload: {}
-      });
-    }, 3500); // 3.5 seconds, not too short to let it load, not too long to have a message too delayed
-  });
-  
-</script> 
+    <script>
+       window.botpressWebChat.onEvent(
+        function (event) {
+          if (event.type === 'LIFECYCLE.LOADED') {
+            window.botpressWebChat.sendEvent({ type: 'show' })
+          }
+        },
+        ['LIFECYCLE.LOADED']
+      )
+</script>
+ 
 
     <div class="swiper-pagination"></div>     
   </div><!-- End Intro Section -->
